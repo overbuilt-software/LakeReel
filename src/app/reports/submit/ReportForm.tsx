@@ -5,6 +5,7 @@ import { ChevronLeft, ChevronDown, CheckCircle } from "lucide-react";
 import Link from "next/link";
 import { lakes } from "@/lib/lakes";
 import { supabase } from "@/lib/supabase";
+import { useAuth } from "@/lib/auth-context";
 
 const speciesOptions = [
   "Largemouth Bass", "Smallmouth Bass", "Spotted Bass",
@@ -37,10 +38,12 @@ const biteActiveColors = [
 ];
 
 export default function ReportForm({ defaultLake }: { defaultLake: string }) {
+  const { user } = useAuth();
   const lakeList = Object.values(lakes);
+  const defaultAuthor = user?.user_metadata?.display_name ?? "";
 
   const [lake, setLake] = useState(defaultLake);
-  const [author, setAuthor] = useState("");
+  const [author, setAuthor] = useState(defaultAuthor);
   const [species, setSpecies] = useState("");
   const [technique, setTechnique] = useState("");
   const [bait, setBait] = useState("");
@@ -71,6 +74,7 @@ export default function ReportForm({ defaultLake }: { defaultLake: string }) {
       water_clarity: null,
       bite_level: biteLevel,
       notes: notes || null,
+      user_id: user?.id ?? null,
     });
 
     setLoading(false);
