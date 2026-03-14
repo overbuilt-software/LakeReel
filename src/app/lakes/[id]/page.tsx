@@ -2,6 +2,15 @@ import { Thermometer, Wind, Droplets, ChevronLeft, Plus, Star, ShoppingBag, Cloc
 import Link from "next/link";
 import { lakes } from "@/lib/lakes";
 import { getLiveConditions } from "@/lib/getConditions";
+import { supabase } from "@/lib/supabase";
+
+function timeAgo(dateStr: string) {
+  const diff = Math.floor((Date.now() - new Date(dateStr).getTime()) / 1000);
+  if (diff < 60) return "just now";
+  if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
+  if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
+  return `${Math.floor(diff / 86400)}d ago`;
+}
 
 const biteColors = ["", "bg-slate-700", "bg-yellow-800", "bg-green-800", "bg-orange-700", "bg-red-700"];
 const biteLabels = ["", "Slow", "Fair", "Good", "Hot", "On Fire"];
@@ -19,7 +28,10 @@ export default async function LakeDetailPage({ params }: { params: Promise<{ id:
     );
   }
 
-  const live = await getLiveConditions(lake.lat, lake.lon, lake.usgsSiteId);
+  const [live, { data: reports }] = await Promise.all([
+    getLiveConditions(lake.lat, lake.lon, lake.usgsSiteId),
+    supabase.from("reports").select("*").eq("lake_id", lake.id).order("created_at", { ascending: false }).limit(20),
+  ]);
 
   return (
     <div className="flex flex-col">
@@ -136,28 +148,29 @@ export default async function LakeDetailPage({ params }: { params: Promise<{ id:
           </Link>
         </div>
 
-        {lake.reports.length === 0 ? (
+        {!reports || reports.length === 0 ? (
           <div className="bg-slate-900 rounded-2xl p-6 border border-slate-800 text-center">
             <p className="text-slate-400 text-sm">No reports yet for this lake.</p>
             <p className="text-slate-500 text-xs mt-1">Be the first to report!</p>
           </div>
         ) : (
           <div className="flex flex-col gap-3">
-            {lake.reports.map((r) => (
+            {reports.map((r) => (
               <div key={r.id} className="bg-slate-900 rounded-2xl p-4 border border-slate-800">
                 <div className="flex items-start justify-between mb-2">
                   <div>
                     <p className="text-sm font-semibold text-white">{r.species}</p>
-                    <p className="text-xs text-slate-400">{r.user} · {r.ago}</p>
+                    <p className="text-xs text-slate-400">{r.author} · {timeAgo(r.created_at)}</p>
                   </div>
-                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${biteColors[r.rating]} text-white`}>
-                    {biteLabels[r.rating]}
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${biteColors[r.bite_level] ?? "bg-slate-700"} text-white`}>
+                    {biteLabels[r.bite_level] ?? "—"}
                   </span>
                 </div>
-                <p className="text-xs text-slate-300 leading-relaxed mb-3">{r.notes}</p>
+                {r.notes && <p className="text-xs text-slate-300 leading-relaxed mb-3">{r.notes}</p>}
                 <div className="flex gap-2 flex-wrap text-xs">
                   <span className="bg-slate-800 text-slate-300 rounded-lg px-2 py-1">{r.technique}</span>
-                  <span className="bg-slate-800 text-slate-300 rounded-lg px-2 py-1">Depth: {r.depth}</span>
+                  {r.bait && <span className="bg-slate-800 text-slate-300 rounded-lg px-2 py-1">{r.bait}</span>}
+                  {r.depth && <span className="bg-slate-800 text-slate-300 rounded-lg px-2 py-1">Depth: {r.depth}</span>}
                 </div>
               </div>
             ))}

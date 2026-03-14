@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ChevronLeft, ChevronDown, CheckCircle } from "lucide-react";
 import Link from "next/link";
 import { lakes } from "@/lib/lakes";
+import { supabase } from "@/lib/supabase";
 
 const speciesOptions = [
   "Largemouth Bass", "Smallmouth Bass", "Spotted Bass",
@@ -39,24 +40,46 @@ export default function ReportForm({ defaultLake }: { defaultLake: string }) {
   const lakeList = Object.values(lakes);
 
   const [lake, setLake] = useState(defaultLake);
+  const [author, setAuthor] = useState("");
   const [species, setSpecies] = useState("");
   const [technique, setTechnique] = useState("");
+  const [bait, setBait] = useState("");
   const [depth, setDepth] = useState("");
   const [biteLevel, setBiteLevel] = useState(0);
   const [notes, setNotes] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const isValid = lake && species && technique && biteLevel > 0;
+  const lakeObj = lakeList.find((l) => l.name === lake);
+  const isValid = lake && species && technique && bait && biteLevel > 0;
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!isValid) return;
     setLoading(true);
-    // Simulate submit — replace with real API call when backend is ready
-    await new Promise((r) => setTimeout(r, 800));
+    setError("");
+
+    const { error: sbError } = await supabase.from("reports").insert({
+      lake_id: lakeObj?.id ?? lake,
+      lake_name: lake,
+      author: author.trim() || "Anonymous",
+      species,
+      technique,
+      bait,
+      depth: depth || null,
+      water_clarity: null,
+      bite_level: biteLevel,
+      notes: notes || null,
+    });
+
     setLoading(false);
-    setSubmitted(true);
+    if (sbError) {
+      console.error("Supabase insert error:", sbError);
+      setError(`Error: ${sbError.message}`);
+    } else {
+      setSubmitted(true);
+    }
   }
 
   if (submitted) {
@@ -77,11 +100,14 @@ export default function ReportForm({ defaultLake }: { defaultLake: string }) {
           <button
             onClick={() => {
               setSubmitted(false);
+              setAuthor("");
               setSpecies("");
               setTechnique("");
+              setBait("");
               setDepth("");
               setBiteLevel(0);
               setNotes("");
+              setError("");
             }}
             className="border border-slate-700 text-slate-300 text-sm font-semibold rounded-xl py-3 active:bg-slate-800 transition-colors"
           >
@@ -129,6 +155,20 @@ export default function ReportForm({ defaultLake }: { defaultLake: string }) {
           </div>
         </div>
 
+        {/* Author */}
+        <div>
+          <label className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2 block">
+            Your Name (optional)
+          </label>
+          <input
+            type="text"
+            value={author}
+            onChange={(e) => setAuthor(e.target.value)}
+            placeholder="e.g. Jason D. or leave blank for Anonymous"
+            className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-sky-500"
+          />
+        </div>
+
         {/* Species */}
         <div>
           <label className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2 block">
@@ -173,6 +213,20 @@ export default function ReportForm({ defaultLake }: { defaultLake: string }) {
               </button>
             ))}
           </div>
+        </div>
+
+        {/* Bait */}
+        <div>
+          <label className="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-2 block">
+            Bait / Lure *
+          </label>
+          <input
+            type="text"
+            value={bait}
+            onChange={(e) => setBait(e.target.value)}
+            placeholder="e.g. Chartreuse 3/8oz jig, Zoom fluke, nightcrawler"
+            className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-sky-500"
+          />
         </div>
 
         {/* Depth */}
@@ -223,6 +277,11 @@ export default function ReportForm({ defaultLake }: { defaultLake: string }) {
             className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm placeholder:text-slate-600 focus:outline-none focus:border-sky-500 resize-none"
           />
         </div>
+
+        {/* Error */}
+        {error && (
+          <p className="text-red-400 text-sm text-center">{error}</p>
+        )}
 
         {/* Submit */}
         <button
