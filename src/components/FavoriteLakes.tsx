@@ -76,9 +76,11 @@ export default function FavoriteLakes() {
                     <p className="text-xs text-slate-400">{lake.state} · {lake.acres} acres</p>
                   </div>
                 </div>
-                <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${biteColors[biteAverages[lake.id] ?? lake.biteLevel]} text-white shrink-0 ml-2`}>
-                  {biteLabels[biteAverages[lake.id] ?? lake.biteLevel]}
-                </span>
+                {biteAverages[lake.id] && (
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${biteColors[biteAverages[lake.id]]} text-white shrink-0 ml-2`}>
+                    {biteLabels[biteAverages[lake.id]]}
+                  </span>
+                )}
               </div>
               <div className="flex gap-2 flex-wrap">
                 {lake.species.slice(0, 3).map((s) => (

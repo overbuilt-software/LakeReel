@@ -38,7 +38,7 @@ export default async function LakeDetailPage({ params }: { params: Promise<{ id:
 
   const dynamicBite = reports && reports.length > 0
     ? Math.round(reports.reduce((sum, r) => sum + r.bite_level, 0) / reports.length)
-    : lake.biteLevel;
+    : null;
 
   return (
     <div className="flex flex-col">
@@ -53,9 +53,11 @@ export default async function LakeDetailPage({ params }: { params: Promise<{ id:
             <p className="text-sky-300 text-xs">{lake.state} · {lake.acres} acres · {lake.county} Co.</p>
           </div>
           <FavoriteButton lakeId={lake.id} />
-          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${biteColors[dynamicBite]} text-white`}>
-            {biteLabels[dynamicBite]}
-          </span>
+          {dynamicBite && (
+            <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${biteColors[dynamicBite]} text-white`}>
+              {biteLabels[dynamicBite]}
+            </span>
+          )}
         </div>
 
         {/* Species tags */}
