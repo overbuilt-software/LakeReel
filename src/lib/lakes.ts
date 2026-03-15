@@ -180,7 +180,7 @@ export const lakes: Record<string, Lake> = {
     county: "Camden / Miller / Morgan / Benton",
     lat: 38.17,
     lon: -92.73,
-    usgsSiteId: null,
+    usgsSiteId: "06926080", // Osage River at Tuscumbia, MO — water temp + gage height
     biteLevel: 4,
     species: ["Largemouth Bass", "Smallmouth Bass", "Crappie", "Catfish", "Walleye", "White Bass"],
     reports: [],
@@ -198,7 +198,7 @@ export const lakes: Record<string, Lake> = {
     county: "Stone / Taney",
     lat: 36.55,
     lon: -93.45,
-    usgsSiteId: null,
+    usgsSiteId: "07053450", // White River below Table Rock Dam near Branson — water temp
     biteLevel: 4,
     species: ["Largemouth Bass", "Smallmouth Bass", "Crappie", "Walleye", "Striped Bass"],
     reports: [],
@@ -216,7 +216,7 @@ export const lakes: Record<string, Lake> = {
     county: "Benton / Henry / Hickory / St. Clair",
     lat: 38.27,
     lon: -93.42,
-    usgsSiteId: null,
+    usgsSiteId: "06926510", // Osage River below Truman Dam — water temp + gage height
     biteLevel: 3,
     species: ["Largemouth Bass", "Crappie", "Catfish", "White Bass"],
     reports: [],
@@ -233,7 +233,7 @@ export const lakes: Record<string, Lake> = {
     county: "Cedar / Dade",
     lat: 37.70,
     lon: -93.78,
-    usgsSiteId: null,
+    usgsSiteId: "06919000", // Sac River near Stockton, MO — gage height only (no water temp sensor)
     biteLevel: 3,
     species: ["Largemouth Bass", "Walleye", "Crappie", "Catfish"],
     reports: [],
@@ -250,7 +250,7 @@ export const lakes: Record<string, Lake> = {
     county: "Hickory / Polk",
     lat: 37.90,
     lon: -93.32,
-    usgsSiteId: null,
+    usgsSiteId: "06921070", // Pomme de Terre River near Polk, MO — gage height only (no water temp sensor)
     biteLevel: 3,
     species: ["Largemouth Bass", "Walleye", "Crappie", "Muskie"],
     reports: [],
@@ -267,7 +267,7 @@ export const lakes: Record<string, Lake> = {
     county: "Monroe / Ralls / Shelby",
     lat: 39.57,
     lon: -91.97,
-    usgsSiteId: null,
+    usgsSiteId: "05508000", // Salt River near New London, MO — gage height only (no water temp sensor)
     biteLevel: 3,
     species: ["Largemouth Bass", "Crappie", "Catfish", "Bluegill"],
     reports: [],
