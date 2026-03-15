@@ -46,7 +46,7 @@ export default function ReportForm({ defaultLake }: { defaultLake: string }) {
 
   useEffect(() => {
     if (!authLoading && !user) {
-      router.push("/login");
+      router.push("/login?redirect=/reports/submit");
     }
   }, [user, authLoading, router]);
 
