@@ -122,7 +122,7 @@ export default async function LakeDetailPage({ params }: { params: Promise<{ id:
         </div>
         <div className="flex flex-col gap-2">
           {lake.tackle.map((p) => (
-            <a key={p.id} href={p.affiliateUrl} target="_blank" rel="noopener noreferrer">
+            <Link key={p.id} href={`/tackle/${lake.id}/${p.id}`}>
               <div className="bg-slate-900 rounded-xl p-3 border border-slate-800 flex items-center gap-3 active:scale-[0.98] transition-transform">
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-semibold text-white truncate">{p.name}</p>
@@ -140,7 +140,7 @@ export default async function LakeDetailPage({ params }: { params: Promise<{ id:
                   </div>
                 </div>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>

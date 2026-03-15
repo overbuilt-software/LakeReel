@@ -1,4 +1,4 @@
-import { ShoppingBag, Star } from "lucide-react";
+import { ShoppingCart, Star } from "lucide-react";
 
 const products = [
   {
@@ -10,7 +10,7 @@ const products = [
     reviews: 1243,
     reason: "Bass hitting topwater on Tenkiller",
     tag: "Trending",
-    affiliateUrl: "#",
+    affiliateUrls: { amazon: "#", basspro: "#" },
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const products = [
     reviews: 876,
     reason: "Pre-spawn bass on Grand Lake",
     tag: "Top Pick",
-    affiliateUrl: "#",
+    affiliateUrls: { amazon: "#", basspro: "#" },
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const products = [
     reviews: 2104,
     reason: "Crappie on jigs reported at Grand Lake",
     tag: "Best Seller",
-    affiliateUrl: "#",
+    affiliateUrls: { amazon: "#", basspro: "#" },
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ const products = [
     reviews: 543,
     reason: "Catfish biting on Keystone",
     tag: null,
-    affiliateUrl: "#",
+    affiliateUrls: { amazon: "#", basspro: "#" },
   },
 ];
 
@@ -63,40 +63,49 @@ export default function TacklePage() {
 
       <div className="px-4 pt-4 flex flex-col gap-3">
         {products.map((p) => (
-          <a key={p.id} href={p.affiliateUrl} target="_blank" rel="noopener noreferrer">
-            <div className="bg-slate-900 rounded-2xl p-4 border border-slate-800 active:scale-[0.98] transition-transform">
-              <div className="flex items-start justify-between mb-1">
-                <div className="flex-1 pr-2">
-                  <p className="font-semibold text-white text-sm">{p.name}</p>
-                  <p className="text-xs text-slate-400">{p.brand}</p>
-                </div>
-                {p.tag && (
-                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${tagColors[p.tag]} text-white whitespace-nowrap`}>
-                    {p.tag}
-                  </span>
-                )}
+          <div key={p.id} className="bg-slate-900 rounded-2xl p-4 border border-slate-800">
+            <div className="flex items-start justify-between mb-1">
+              <div className="flex-1 pr-2">
+                <p className="font-semibold text-white text-sm">{p.name}</p>
+                <p className="text-xs text-slate-400">{p.brand}</p>
               </div>
-
-              <p className="text-xs text-sky-400 mb-3">Because: {p.reason}</p>
-
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-1.5">
-                  <div className="flex items-center gap-0.5">
-                    <Star size={12} className="text-yellow-400 fill-yellow-400" />
-                    <span className="text-xs text-white font-medium">{p.rating}</span>
-                  </div>
-                  <span className="text-xs text-slate-500">({p.reviews.toLocaleString()})</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-sm font-bold text-white">{p.price}</span>
-                  <div className="flex items-center gap-1 bg-orange-600 rounded-lg px-3 py-1.5">
-                    <ShoppingBag size={13} className="text-white" />
-                    <span className="text-xs font-semibold text-white">Buy</span>
-                  </div>
-                </div>
-              </div>
+              {p.tag && (
+                <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${tagColors[p.tag]} text-white whitespace-nowrap`}>
+                  {p.tag}
+                </span>
+              )}
             </div>
-          </a>
+
+            <p className="text-xs text-sky-400 mb-2">Because: {p.reason}</p>
+
+            <div className="flex items-center gap-1.5 mb-3">
+              <Star size={12} className="text-yellow-400 fill-yellow-400" />
+              <span className="text-xs text-white font-medium">{p.rating}</span>
+              <span className="text-xs text-slate-500">({p.reviews.toLocaleString()})</span>
+              <span className="text-xs text-white font-bold ml-auto">{p.price}</span>
+            </div>
+
+            <div className="flex gap-2">
+              <a
+                href={p.affiliateUrls.amazon}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-1.5 bg-[#FF9900] rounded-xl py-2.5 active:opacity-80 transition-opacity"
+              >
+                <ShoppingCart size={13} className="text-black" />
+                <span className="text-xs font-bold text-black">Amazon</span>
+              </a>
+              <a
+                href={p.affiliateUrls.basspro}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-1.5 bg-orange-700 rounded-xl py-2.5 active:opacity-80 transition-opacity"
+              >
+                <ShoppingCart size={13} className="text-white" />
+                <span className="text-xs font-bold text-white">Bass Pro</span>
+              </a>
+            </div>
+          </div>
         ))}
       </div>
 
