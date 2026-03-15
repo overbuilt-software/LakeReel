@@ -39,16 +39,16 @@ const biteActiveColors = [
 ];
 
 export default function ReportForm({ defaultLake }: { defaultLake: string }) {
-  const { user, loading } = useAuth();
+  const { user, loading: authLoading } = useAuth();
   const router = useRouter();
   const lakeList = Object.values(lakes);
   const defaultAuthor = user?.user_metadata?.display_name ?? "";
 
   useEffect(() => {
-    if (!loading && !user) {
+    if (!authLoading && !user) {
       router.push("/login");
     }
-  }, [user, loading, router]);
+  }, [user, authLoading, router]);
 
   const [lake, setLake] = useState(defaultLake);
   const [author, setAuthor] = useState(defaultAuthor);
@@ -94,7 +94,7 @@ export default function ReportForm({ defaultLake }: { defaultLake: string }) {
     }
   }
 
-  if (loading || !user) {
+  if (authLoading || !user) {
     return (
       <div className="flex items-center justify-center min-h-[70vh]">
         <p className="text-slate-400 text-sm">Loading…</p>
