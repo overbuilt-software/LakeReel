@@ -32,7 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geist.variable} antialiased bg-slate-950 text-white`}>
         <AuthProvider>
-          <main className="min-h-dvh pb-20">
+          <main className="min-h-screen pb-20">
             {children}
           </main>
           <Footer />
