@@ -1,4 +1,5 @@
 import { ShoppingCart, Star } from "lucide-react";
+import { amazonUrl } from "@/lib/lakes";
 
 const products = [
   {
@@ -10,7 +11,7 @@ const products = [
     reviews: 1243,
     reason: "Bass hitting topwater on Tenkiller",
     tag: "Trending",
-    affiliateUrls: { amazon: "#", basspro: "#" },
+    asin: null, bassproUrl: null,
   },
   {
     id: 2,
@@ -21,7 +22,7 @@ const products = [
     reviews: 876,
     reason: "Pre-spawn bass on Grand Lake",
     tag: "Top Pick",
-    affiliateUrls: { amazon: "#", basspro: "#" },
+    asin: null, bassproUrl: null,
   },
   {
     id: 3,
@@ -32,7 +33,7 @@ const products = [
     reviews: 2104,
     reason: "Crappie on jigs reported at Grand Lake",
     tag: "Best Seller",
-    affiliateUrls: { amazon: "#", basspro: "#" },
+    asin: null, bassproUrl: null,
   },
   {
     id: 4,
@@ -43,7 +44,7 @@ const products = [
     reviews: 543,
     reason: "Catfish biting on Keystone",
     tag: null,
-    affiliateUrls: { amazon: "#", basspro: "#" },
+    asin: null, bassproUrl: null,
   },
 ];
 
@@ -85,26 +86,32 @@ export default function TacklePage() {
               <span className="text-xs text-white font-bold ml-auto">{p.price}</span>
             </div>
 
-            <div className="flex gap-2">
-              <a
-                href={p.affiliateUrls.amazon}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-1.5 bg-[#FF9900] rounded-xl py-2.5 active:opacity-80 transition-opacity"
-              >
-                <ShoppingCart size={13} className="text-black" />
-                <span className="text-xs font-bold text-black">Amazon</span>
-              </a>
-              <a
-                href={p.affiliateUrls.basspro}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-1.5 bg-orange-700 rounded-xl py-2.5 active:opacity-80 transition-opacity"
-              >
-                <ShoppingCart size={13} className="text-white" />
-                <span className="text-xs font-bold text-white">Bass Pro</span>
-              </a>
-            </div>
+            {(p.asin || p.bassproUrl) && (
+              <div className="flex gap-2">
+                {p.asin && (
+                  <a
+                    href={amazonUrl(p.asin)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-1.5 bg-[#FF9900] rounded-xl py-2.5 active:opacity-80 transition-opacity"
+                  >
+                    <ShoppingCart size={13} className="text-black" />
+                    <span className="text-xs font-bold text-black">Amazon</span>
+                  </a>
+                )}
+                {p.bassproUrl && (
+                  <a
+                    href={p.bassproUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-1.5 bg-orange-700 rounded-xl py-2.5 active:opacity-80 transition-opacity"
+                  >
+                    <ShoppingCart size={13} className="text-white" />
+                    <span className="text-xs font-bold text-white">Bass Pro</span>
+                  </a>
+                )}
+              </div>
+            )}
           </div>
         ))}
       </div>
