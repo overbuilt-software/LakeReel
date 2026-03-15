@@ -1,6 +1,8 @@
 import { Clock, Fish } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 
+export const revalidate = 0;
+
 const biteColors = ["", "bg-slate-700", "bg-yellow-800", "bg-green-800", "bg-orange-700", "bg-red-700"];
 const biteLabels = ["", "Slow", "Fair", "Good", "Hot", "On Fire"];
 

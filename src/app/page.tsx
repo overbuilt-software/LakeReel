@@ -4,6 +4,8 @@ import { supabase } from "@/lib/supabase";
 import HomeClient from "@/components/HomeClient";
 import NearbyReports from "@/components/NearbyReports";
 
+export const revalidate = 0;
+
 export default async function HomePage() {
   const { data: reports } = await supabase
     .from("reports")

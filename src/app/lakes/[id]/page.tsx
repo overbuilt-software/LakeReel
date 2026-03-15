@@ -4,6 +4,8 @@ import { lakes } from "@/lib/lakes";
 import { getLiveConditions } from "@/lib/getConditions";
 import { supabase } from "@/lib/supabase";
 
+export const revalidate = 0;
+
 function timeAgo(dateStr: string) {
   const diff = Math.floor((Date.now() - new Date(dateStr).getTime()) / 1000);
   if (diff < 60) return "just now";
