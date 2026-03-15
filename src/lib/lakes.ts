@@ -260,7 +260,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Crappie", "Muskie"],
     reports: [],
     tackle: [
-      { id: 1, name: "Suick Thriller Muskie Bait", brand: "Suick", price: "$24.99", rating: 4.4, reviews: 312, reason: "Muskie active on jerkbaits", asin: "B0DTJP3FMM" },
+      { id: 1, name: "Suick Thriller Muskie Bait", brand: "Suick", price: "$24.99", rating: 4.4, reviews: 312, reason: "Muskie active on jerkbaits", asin: "B00A6ZB8Y6" },
     ],
   },
   "11": {
@@ -474,7 +474,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Northern Pike", "Walleye", "Crappie", "Muskie", "Bluegill"],
     reports: [],
     tackle: [
-      { id: 1, name: "Suick Thriller Muskie Bait", brand: "Suick", price: "$24.99", rating: 4.4, reviews: 312, reason: "Muskie and pike active on jerkbaits", asin: "B0DTJP3FMM" },
+      { id: 1, name: "Suick Thriller Muskie Bait", brand: "Suick", price: "$24.99", rating: 4.4, reviews: 312, reason: "Muskie and pike active on jerkbaits", asin: "B00A6ZB8Y6" },
       { id: 2, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Classic walleye and pike producer", asin: "B001NXCC4K" },
     ],
   },
@@ -941,7 +941,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Walleye", "Largemouth Bass", "Northern Pike", "Channel Catfish", "Crappie", "Tiger Muskie"],
     reports: [],
     tackle: [
-      { id: 1, name: "Suick Thriller Muskie Bait", brand: "Suick", price: "$24.99", rating: 4.4, reviews: 312, reason: "Tiger muskie and pike active on jerkbaits", asin: "B0DTJP3FMM" },
+      { id: 1, name: "Suick Thriller Muskie Bait", brand: "Suick", price: "$24.99", rating: 4.4, reviews: 312, reason: "Tiger muskie and pike active on jerkbaits", asin: "B00A6ZB8Y6" },
     ],
   },
 
