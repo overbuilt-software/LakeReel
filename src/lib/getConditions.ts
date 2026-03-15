@@ -53,7 +53,7 @@ export async function getLiveConditions(
 
       if (code === "00010" && latest) {
         const celsius = parseFloat(latest);
-        if (!isNaN(celsius)) {
+        if (!isNaN(celsius) && celsius > -50 && celsius < 50) {
           waterTemp = `${Math.round((celsius * 9) / 5 + 32)}°F`;
         }
       }
