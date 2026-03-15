@@ -3,6 +3,7 @@ import Link from "next/link";
 import { lakes } from "@/lib/lakes";
 import { getLiveConditions } from "@/lib/getConditions";
 import { supabase } from "@/lib/supabase";
+import FavoriteButton from "@/components/FavoriteButton";
 
 export const revalidate = 0;
 
@@ -47,6 +48,7 @@ export default async function LakeDetailPage({ params }: { params: Promise<{ id:
             <h1 className="text-xl font-bold text-white">{lake.name}</h1>
             <p className="text-sky-300 text-xs">{lake.state} · {lake.acres} acres · {lake.county} Co.</p>
           </div>
+          <FavoriteButton lakeId={lake.id} />
           <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${biteColors[lake.biteLevel]} text-white`}>
             {biteLabels[lake.biteLevel]}
           </span>

@@ -2,10 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { FileText, LogOut, User } from "lucide-react";
+import { FileText, Heart, LogOut, MapPin, User } from "lucide-react";
 import Link from "next/link";
 import { useAuth } from "@/lib/auth-context";
 import { supabase } from "@/lib/supabase";
+import { lakes } from "@/lib/lakes";
+
+type Favorite = {
+  lake_id: string;
+};
 
 type Report = {
   id: string;
@@ -35,6 +40,7 @@ export default function ProfilePage() {
   const router = useRouter();
   const [reports, setReports] = useState<Report[]>([]);
   const [reportsLoading, setReportsLoading] = useState(false);
+  const [favorites, setFavorites] = useState<Favorite[]>([]);
   const displayName = user?.user_metadata?.display_name ?? user?.email?.split("@")[0] ?? "Angler";
 
   useEffect(() => {
@@ -46,15 +52,21 @@ export default function ProfilePage() {
   useEffect(() => {
     if (!user) return;
     setReportsLoading(true);
-    supabase
-      .from("reports")
-      .select("id, lake_name, lake_id, species, technique, bait, bite_level, notes, created_at")
-      .eq("user_id", user.id)
-      .order("created_at", { ascending: false })
-      .then(({ data }) => {
-        setReports(data ?? []);
-        setReportsLoading(false);
-      });
+    Promise.all([
+      supabase
+        .from("reports")
+        .select("id, lake_name, lake_id, species, technique, bait, bite_level, notes, created_at")
+        .eq("user_id", user.id)
+        .order("created_at", { ascending: false }),
+      supabase
+        .from("favorites")
+        .select("lake_id")
+        .eq("user_id", user.id),
+    ]).then(([{ data: reportData }, { data: favData }]) => {
+      setReports(reportData ?? []);
+      setFavorites(favData ?? []);
+      setReportsLoading(false);
+    });
   }, [user]);
 
   async function handleSignOut() {
@@ -94,6 +106,33 @@ export default function ProfilePage() {
           </button>
         </div>
       </header>
+
+      {/* Favorite Lakes */}
+      {favorites.length > 0 && (
+        <section className="px-4 pt-5">
+          <div className="flex items-center gap-2 mb-3">
+            <Heart size={16} className="text-red-500 fill-red-500" />
+            <h2 className="text-sm font-semibold text-slate-400 uppercase tracking-wide">Favorite Lakes</h2>
+          </div>
+          <div className="flex flex-col gap-2">
+            {favorites.map(({ lake_id }) => {
+              const lake = lakes[lake_id];
+              if (!lake) return null;
+              return (
+                <Link key={lake_id} href={`/lakes/${lake_id}`}>
+                  <div className="bg-slate-900 rounded-2xl p-4 border border-slate-800 flex items-center gap-3 active:scale-[0.98] transition-transform">
+                    <MapPin size={15} className="text-sky-400 shrink-0" />
+                    <div className="flex-1 min-w-0">
+                      <p className="font-semibold text-white text-sm">{lake.name}</p>
+                      <p className="text-xs text-slate-400">{lake.state} · {lake.acres} acres</p>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       {/* My Reports */}
       <section className="px-4 pt-5">
