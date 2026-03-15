@@ -252,7 +252,7 @@ export const lakes: Record<string, Lake> = {
     lon: -93.32,
     usgsSiteId: "06921070", // Pomme de Terre River near Polk, MO — gage height only (no water temp sensor)
     biteLevel: 3,
-    species: ["Largemouth Bass", "Walleye", "Crappie", "Muskie"],
+    species: ["Largemouth Bass", "Crappie", "Muskie"],
     reports: [],
     tackle: [
       { id: 1, name: "Suick Thriller Muskie Bait", brand: "Suick", price: "$24.99", rating: 4.4, reviews: 312, reason: "Muskie active on jerkbaits", affiliateUrl: "#" },
