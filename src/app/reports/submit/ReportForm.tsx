@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronDown, CheckCircle } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { lakes } from "@/lib/lakes";
 import { supabase } from "@/lib/supabase";
 import { useAuth } from "@/lib/auth-context";
@@ -38,9 +39,16 @@ const biteActiveColors = [
 ];
 
 export default function ReportForm({ defaultLake }: { defaultLake: string }) {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
+  const router = useRouter();
   const lakeList = Object.values(lakes);
   const defaultAuthor = user?.user_metadata?.display_name ?? "";
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push("/login");
+    }
+  }, [user, loading, router]);
 
   const [lake, setLake] = useState(defaultLake);
   const [author, setAuthor] = useState(defaultAuthor);
@@ -84,6 +92,14 @@ export default function ReportForm({ defaultLake }: { defaultLake: string }) {
     } else {
       setSubmitted(true);
     }
+  }
+
+  if (loading || !user) {
+    return (
+      <div className="flex items-center justify-center min-h-[70vh]">
+        <p className="text-slate-400 text-sm">Loading…</p>
+      </div>
+    );
   }
 
   if (submitted) {
