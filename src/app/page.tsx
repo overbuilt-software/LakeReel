@@ -3,6 +3,7 @@ import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import HomeClient from "@/components/HomeClient";
 import NearbyReports from "@/components/NearbyReports";
+import FavoriteLakes from "@/components/FavoriteLakes";
 
 export const revalidate = 0;
 
@@ -17,6 +18,9 @@ export default async function HomePage() {
     <div className="flex flex-col">
       {/* Header + conditions strip (client — needs geolocation) */}
       <HomeClient />
+
+      {/* Favorite Lakes (only shown when logged in with favorites) */}
+      <FavoriteLakes />
 
       {/* Recent Reports */}
       <section className="px-4 pt-5">
