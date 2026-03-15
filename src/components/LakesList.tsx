@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MapPin, Navigation } from "lucide-react";
+import { MapPin, Navigation, Search } from "lucide-react";
 import Link from "next/link";
 import { type Lake } from "@/lib/lakes";
 
@@ -21,6 +21,7 @@ function distanceMiles(lat1: number, lon1: number, lat2: number, lon2: number) {
 export default function LakesList({ lakes }: { lakes: Lake[] }) {
   const [userLat, setUserLat] = useState<number | null>(null);
   const [userLon, setUserLon] = useState<number | null>(null);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     if (!navigator.geolocation) return;
@@ -35,20 +36,43 @@ export default function LakesList({ lakes }: { lakes: Lake[] }) {
 
   const lat = userLat;
   const lon = userLon;
-  const sorted = lat !== null && lon !== null
-    ? [...lakes].sort((a, b) =>
-        distanceMiles(lat, lon, a.lat, a.lon) -
-        distanceMiles(lat, lon, b.lat, b.lon)
+
+  const filtered = query.trim()
+    ? lakes.filter((l) =>
+        l.name.toLowerCase().includes(query.toLowerCase()) ||
+        l.state.toLowerCase().includes(query.toLowerCase()) ||
+        l.county.toLowerCase().includes(query.toLowerCase())
       )
     : lakes;
 
+  const sorted = lat !== null && lon !== null
+    ? [...filtered].sort((a, b) =>
+        distanceMiles(lat, lon, a.lat, a.lon) -
+        distanceMiles(lat, lon, b.lat, b.lon)
+      )
+    : filtered;
+
   return (
     <div className="px-4 pt-4 flex flex-col gap-3 pb-6">
+      <div className="flex items-center gap-3 bg-slate-900 rounded-xl px-4 py-3 border border-slate-800">
+        <Search size={16} className="text-slate-500 shrink-0" />
+        <input
+          type="text"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search by lake, state, or county…"
+          className="flex-1 bg-transparent text-white text-sm placeholder:text-slate-600 focus:outline-none"
+        />
+      </div>
       {lat !== null && (
         <div className="flex items-center gap-1.5 text-xs text-sky-400 mb-1">
           <Navigation size={12} />
           Sorted by distance from you
         </div>
+      )}
+
+      {sorted.length === 0 && (
+        <p className="text-slate-500 text-sm text-center py-8">No lakes found for "{query}"</p>
       )}
 
       {sorted.map((lake) => {
