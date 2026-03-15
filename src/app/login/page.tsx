@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Fish } from "lucide-react";
+import { Fish, Heart, FileText, CheckCircle } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 
 export default function LoginPage() {
@@ -75,6 +75,23 @@ export default function LoginPage() {
             Sign Up
           </button>
         </div>
+
+        {mode === "signup" && (
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 flex flex-col gap-3">
+            <div className="flex items-center gap-2">
+              <CheckCircle size={15} className="text-green-400 shrink-0" />
+              <p className="text-sm font-semibold text-white">Free — always</p>
+            </div>
+            <div className="flex items-start gap-2">
+              <FileText size={15} className="text-sky-400 shrink-0 mt-0.5" />
+              <p className="text-sm text-slate-300">Submit fishing reports and share what's biting with other anglers</p>
+            </div>
+            <div className="flex items-start gap-2">
+              <Heart size={15} className="text-red-400 shrink-0 mt-0.5" />
+              <p className="text-sm text-slate-300">Save favorite lakes to your profile for quick access</p>
+            </div>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           {mode === "signup" && (
