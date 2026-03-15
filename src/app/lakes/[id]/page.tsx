@@ -36,6 +36,10 @@ export default async function LakeDetailPage({ params }: { params: Promise<{ id:
     supabase.from("reports").select("*").eq("lake_id", lake.id).order("created_at", { ascending: false }).limit(20),
   ]);
 
+  const dynamicBite = reports && reports.length > 0
+    ? Math.round(reports.reduce((sum, r) => sum + r.bite_level, 0) / reports.length)
+    : lake.biteLevel;
+
   return (
     <div className="flex flex-col">
       {/* Header */}
@@ -49,8 +53,8 @@ export default async function LakeDetailPage({ params }: { params: Promise<{ id:
             <p className="text-sky-300 text-xs">{lake.state} · {lake.acres} acres · {lake.county} Co.</p>
           </div>
           <FavoriteButton lakeId={lake.id} />
-          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${biteColors[lake.biteLevel]} text-white`}>
-            {biteLabels[lake.biteLevel]}
+          <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${biteColors[dynamicBite]} text-white`}>
+            {biteLabels[dynamicBite]}
           </span>
         </div>
 

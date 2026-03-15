@@ -14,6 +14,7 @@ export default function FavoriteLakes() {
   const { user, loading: authLoading } = useAuth();
   const [lakeIds, setLakeIds] = useState<string[]>([]);
   const [loaded, setLoaded] = useState(false);
+  const [biteAverages, setBiteAverages] = useState<Record<string, number>>({});
 
   useEffect(() => {
     if (authLoading) return;
@@ -24,8 +25,31 @@ export default function FavoriteLakes() {
       .select("lake_id")
       .eq("user_id", user.id)
       .then(({ data }) => {
-        setLakeIds((data ?? []).map((f: { lake_id: string }) => f.lake_id));
+        const ids = (data ?? []).map((f: { lake_id: string }) => f.lake_id);
+        setLakeIds(ids);
         setLoaded(true);
+
+        if (ids.length === 0) return;
+        const since = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
+        supabase
+          .from("reports")
+          .select("lake_id, bite_level")
+          .in("lake_id", ids)
+          .gte("created_at", since)
+          .then(({ data: reports }) => {
+            if (!reports) return;
+            const totals: Record<string, { sum: number; count: number }> = {};
+            for (const { lake_id, bite_level } of reports) {
+              if (!totals[lake_id]) totals[lake_id] = { sum: 0, count: 0 };
+              totals[lake_id].sum += bite_level;
+              totals[lake_id].count += 1;
+            }
+            const avgs: Record<string, number> = {};
+            for (const [id, { sum, count }] of Object.entries(totals)) {
+              avgs[id] = Math.round(sum / count);
+            }
+            setBiteAverages(avgs);
+          });
       });
   }, [user, authLoading]);
 
@@ -52,8 +76,8 @@ export default function FavoriteLakes() {
                     <p className="text-xs text-slate-400">{lake.state} · {lake.acres} acres</p>
                   </div>
                 </div>
-                <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${biteColors[lake.biteLevel]} text-white shrink-0`}>
-                  {biteLabels[lake.biteLevel]}
+                <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${biteColors[biteAverages[lake.id] ?? lake.biteLevel]} text-white shrink-0`}>
+                  {biteLabels[biteAverages[lake.id] ?? lake.biteLevel]}
                 </span>
               </div>
               <div className="flex gap-2 flex-wrap">

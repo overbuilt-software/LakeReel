@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { MapPin, Navigation, Search } from "lucide-react";
 import Link from "next/link";
 import { type Lake } from "@/lib/lakes";
+import { supabase } from "@/lib/supabase";
 
 const biteColors = ["", "bg-slate-700", "bg-yellow-800", "bg-green-800", "bg-orange-700", "bg-red-700"];
 const biteLabels = ["", "Slow", "Fair", "Good", "Hot", "On Fire"];
@@ -22,6 +23,7 @@ export default function LakesList({ lakes }: { lakes: Lake[] }) {
   const [userLat, setUserLat] = useState<number | null>(null);
   const [userLon, setUserLon] = useState<number | null>(null);
   const [query, setQuery] = useState("");
+  const [biteAverages, setBiteAverages] = useState<Record<string, number>>({});
 
   useEffect(() => {
     if (!navigator.geolocation) return;
@@ -30,8 +32,30 @@ export default function LakesList({ lakes }: { lakes: Lake[] }) {
         setUserLat(pos.coords.latitude);
         setUserLon(pos.coords.longitude);
       },
-      () => {} // silently ignore if denied
+      () => {}
     );
+  }, []);
+
+  useEffect(() => {
+    const since = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
+    supabase
+      .from("reports")
+      .select("lake_id, bite_level")
+      .gte("created_at", since)
+      .then(({ data }) => {
+        if (!data) return;
+        const totals: Record<string, { sum: number; count: number }> = {};
+        for (const { lake_id, bite_level } of data) {
+          if (!totals[lake_id]) totals[lake_id] = { sum: 0, count: 0 };
+          totals[lake_id].sum += bite_level;
+          totals[lake_id].count += 1;
+        }
+        const avgs: Record<string, number> = {};
+        for (const [id, { sum, count }] of Object.entries(totals)) {
+          avgs[id] = Math.round(sum / count);
+        }
+        setBiteAverages(avgs);
+      });
   }, []);
 
   const lat = userLat;
@@ -94,8 +118,8 @@ export default function LakesList({ lakes }: { lakes: Lake[] }) {
                     </p>
                   </div>
                 </div>
-                <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${biteColors[lake.biteLevel]} text-white shrink-0`}>
-                  {biteLabels[lake.biteLevel]}
+                <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${biteColors[biteAverages[lake.id] ?? lake.biteLevel]} text-white shrink-0`}>
+                  {biteLabels[biteAverages[lake.id] ?? lake.biteLevel]}
                 </span>
               </div>
               <div className="flex gap-2 flex-wrap">
