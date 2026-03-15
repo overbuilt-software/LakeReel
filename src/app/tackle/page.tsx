@@ -86,31 +86,16 @@ export default function TacklePage() {
               <span className="text-xs text-white font-bold ml-auto">{p.price}</span>
             </div>
 
-            {(p.asin || p.bassproUrl) && (
-              <div className="flex gap-2">
-                {p.asin && (
-                  <a
-                    href={amazonUrl(p.asin)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-1.5 bg-[#FF9900] rounded-xl py-2.5 active:opacity-80 transition-opacity"
-                  >
-                    <ShoppingCart size={13} className="text-black" />
-                    <span className="text-xs font-bold text-black">Amazon</span>
-                  </a>
-                )}
-                {p.bassproUrl && (
-                  <a
-                    href={p.bassproUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-1.5 bg-orange-700 rounded-xl py-2.5 active:opacity-80 transition-opacity"
-                  >
-                    <ShoppingCart size={13} className="text-white" />
-                    <span className="text-xs font-bold text-white">Bass Pro</span>
-                  </a>
-                )}
-              </div>
+            {p.asin && (
+              <a
+                href={amazonUrl(p.asin)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-1.5 bg-[#FF9900] rounded-xl py-2.5 active:opacity-80 transition-opacity"
+              >
+                <ShoppingCart size={13} className="text-black" />
+                <span className="text-xs font-bold text-black">Buy on Amazon</span>
+              </a>
             )}
           </div>
         ))}

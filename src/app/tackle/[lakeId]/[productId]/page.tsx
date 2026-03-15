@@ -50,42 +50,24 @@ export default async function ProductPage({
         </div>
 
         {/* Buy buttons */}
-        {(product.asin || product.bassproUrl) && (
-          <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Choose where to buy</p>
-        )}
-
-        {product.asin && (
-          <a
-            href={amazonUrl(product.asin)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-between bg-[#FF9900] rounded-2xl px-5 py-4 active:opacity-80 transition-opacity"
-          >
-            <div>
-              <p className="text-black font-bold text-sm">Amazon</p>
-              <p className="text-black/70 text-xs mt-0.5">Fast shipping · Prime eligible</p>
-            </div>
-            <ShoppingCart size={22} className="text-black" />
-          </a>
-        )}
-
-        {product.bassproUrl && (
-          <a
-            href={product.bassproUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-between bg-orange-700 rounded-2xl px-5 py-4 active:opacity-80 transition-opacity"
-          >
-            <div>
-              <p className="text-white font-bold text-sm">Bass Pro Shops</p>
-              <p className="text-orange-200 text-xs mt-0.5">In-store pickup available</p>
-            </div>
-            <ShoppingCart size={22} className="text-white" />
-          </a>
-        )}
-
-        {!product.asin && !product.bassproUrl && (
-          <p className="text-sm text-slate-500 text-center py-4">Buy links coming soon.</p>
+        {product.asin ? (
+          <>
+            <p className="text-xs font-semibold text-slate-400 uppercase tracking-wide">Buy on Amazon</p>
+            <a
+              href={amazonUrl(product.asin)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between bg-[#FF9900] rounded-2xl px-5 py-4 active:opacity-80 transition-opacity"
+            >
+              <div>
+                <p className="text-black font-bold text-sm">Amazon</p>
+                <p className="text-black/70 text-xs mt-0.5">Fast shipping · Prime eligible</p>
+              </div>
+              <ShoppingCart size={22} className="text-black" />
+            </a>
+          </>
+        ) : (
+          <p className="text-sm text-slate-500 text-center py-4">Buy link coming soon.</p>
         )}
 
         <p className="text-xs text-slate-600 text-center pb-2">

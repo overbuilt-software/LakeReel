@@ -34,7 +34,6 @@ export type LakeTackle = {
   reviews: number;
   reason: string;
   asin: string | null;
-  bassproUrl: string | null;
 };
 
 export function amazonUrl(asin: string): string {
@@ -77,9 +76,9 @@ export const lakes: Record<string, Lake> = {
       },
     ],
     tackle: [
-      { id: 1, name: "BOOYAH Pad Crasher Frog", brand: "BOOYAH", price: "$8.99", rating: 4.7, reviews: 1243, reason: "Bass hitting topwater frogs right now", asin: null, bassproUrl: null },
-      { id: 2, name: "Zoom Horny Toad", brand: "Zoom", price: "$5.49", rating: 4.5, reviews: 891, reason: "Walking bait producing in the shallows", asin: null, bassproUrl: null },
-      { id: 3, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Reaction bite on the main lake points", asin: null, bassproUrl: null },
+      { id: 1, name: "BOOYAH Pad Crasher Frog", brand: "BOOYAH", price: "$8.99", rating: 4.7, reviews: 1243, reason: "Bass hitting topwater frogs right now", asin: "B00BRUU72I" },
+      { id: 2, name: "Zoom Horny Toad", brand: "Zoom", price: "$5.49", rating: 4.5, reviews: 891, reason: "Walking bait producing in the shallows", asin: null },
+      { id: 3, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Reaction bite on the main lake points", asin: null },
     ],
   },
   "2": {
@@ -107,8 +106,8 @@ export const lakes: Record<string, Lake> = {
       },
     ],
     tackle: [
-      { id: 1, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie crushing jigs right now", asin: null, bassproUrl: null },
-      { id: 2, name: "Southern Pro Tube Jig 1/8oz", brand: "Southern Pro", price: "$3.99", rating: 4.4, reviews: 654, reason: "Matching the hatch at 12–18ft", asin: null, bassproUrl: null },
+      { id: 1, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie crushing jigs right now", asin: null },
+      { id: 2, name: "Southern Pro Tube Jig 1/8oz", brand: "Southern Pro", price: "$3.99", rating: 4.4, reviews: 654, reason: "Matching the hatch at 12–18ft", asin: null },
     ],
   },
   "3": {
@@ -136,8 +135,8 @@ export const lakes: Record<string, Lake> = {
       },
     ],
     tackle: [
-      { id: 1, name: "Berkley Gulp! Catfish Dough", brand: "Berkley", price: "$6.99", rating: 4.4, reviews: 543, reason: "Catfish biting on bottom rigs", asin: null, bassproUrl: null },
-      { id: 2, name: "Eagle Claw Kahle Hook 3/0", brand: "Eagle Claw", price: "$4.49", rating: 4.6, reviews: 1876, reason: "Standard bottom rig setup", asin: null, bassproUrl: null },
+      { id: 1, name: "Berkley Gulp! Catfish Dough", brand: "Berkley", price: "$6.99", rating: 4.4, reviews: 543, reason: "Catfish biting on bottom rigs", asin: null },
+      { id: 2, name: "Eagle Claw Kahle Hook 3/0", brand: "Eagle Claw", price: "$4.49", rating: 4.6, reviews: 1876, reason: "Standard bottom rig setup", asin: null },
     ],
   },
   "4": {
@@ -154,7 +153,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Crappie", "Catfish", "White Bass"],
     reports: [],
     tackle: [
-      { id: 1, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Classic producer on Eufaula", asin: null, bassproUrl: null },
+      { id: 1, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Classic producer on Eufaula", asin: null },
     ],
   },
   "5": {
@@ -171,7 +170,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Crappie", "Catfish"],
     reports: [],
     tackle: [
-      { id: 1, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "Lipless crank working in cooler water", asin: null, bassproUrl: null },
+      { id: 1, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "Lipless crank working in cooler water", asin: null },
     ],
   },
 
@@ -190,8 +189,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Crappie", "Catfish", "Walleye", "White Bass"],
     reports: [],
     tackle: [
-      { id: 1, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Bass crushing crankbaits on main lake points", asin: null, bassproUrl: null },
-      { id: 2, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie stacking in the coves", asin: null, bassproUrl: null },
+      { id: 1, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Bass crushing crankbaits on main lake points", asin: null },
+      { id: 2, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie stacking in the coves", asin: null },
     ],
   },
   "7": {
@@ -208,8 +207,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Crappie", "Walleye", "Striped Bass"],
     reports: [],
     tackle: [
-      { id: 1, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Classic smallmouth producer on Table Rock", asin: null, bassproUrl: null },
-      { id: 2, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Drop shot and shaky head working well", asin: null, bassproUrl: null },
+      { id: 1, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Classic smallmouth producer on Table Rock", asin: null },
+      { id: 2, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Drop shot and shaky head working well", asin: null },
     ],
   },
   "8": {
@@ -226,7 +225,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Crappie", "Catfish", "White Bass"],
     reports: [],
     tackle: [
-      { id: 1, name: "Berkley PowerBait Maxscent Flatworm", brand: "Berkley", price: "$7.99", rating: 4.5, reviews: 654, reason: "Finesse presentations working on Truman", asin: null, bassproUrl: null },
+      { id: 1, name: "Berkley PowerBait Maxscent Flatworm", brand: "Berkley", price: "$7.99", rating: 4.5, reviews: 654, reason: "Finesse presentations working on Truman", asin: null },
     ],
   },
   "9": {
@@ -243,7 +242,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Walleye", "Crappie", "Catfish"],
     reports: [],
     tackle: [
-      { id: 1, name: "Rapala Jigging Rap", brand: "Rapala", price: "$10.99", rating: 4.6, reviews: 789, reason: "Walleye biting on jigging presentations", asin: null, bassproUrl: null },
+      { id: 1, name: "Rapala Jigging Rap", brand: "Rapala", price: "$10.99", rating: 4.6, reviews: 789, reason: "Walleye biting on jigging presentations", asin: null },
     ],
   },
   "10": {
@@ -260,7 +259,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Crappie", "Muskie"],
     reports: [],
     tackle: [
-      { id: 1, name: "Suick Thriller Muskie Bait", brand: "Suick", price: "$24.99", rating: 4.4, reviews: 312, reason: "Muskie active on jerkbaits", asin: null, bassproUrl: null },
+      { id: 1, name: "Suick Thriller Muskie Bait", brand: "Suick", price: "$24.99", rating: 4.4, reviews: 312, reason: "Muskie active on jerkbaits", asin: null },
     ],
   },
   "11": {
@@ -277,7 +276,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Crappie", "Catfish", "Bluegill"],
     reports: [],
     tackle: [
-      { id: 1, name: "Eagle Claw Kahle Hook 3/0", brand: "Eagle Claw", price: "$4.49", rating: 4.6, reviews: 1876, reason: "Standard bottom rig for catfish", asin: null, bassproUrl: null },
+      { id: 1, name: "Eagle Claw Kahle Hook 3/0", brand: "Eagle Claw", price: "$4.49", rating: 4.6, reviews: 1876, reason: "Standard bottom rig for catfish", asin: null },
     ],
   },
 
@@ -296,8 +295,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Crappie", "Walleye", "Channel Catfish", "White Bass"],
     reports: [],
     tackle: [
-      { id: 1, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Bass crushing crankbaits on main lake points", asin: null, bassproUrl: null },
-      { id: 2, name: "Rapala Jigging Rap", brand: "Rapala", price: "$10.99", rating: 4.6, reviews: 789, reason: "Walleye biting on jigging presentations", asin: null, bassproUrl: null },
+      { id: 1, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Bass crushing crankbaits on main lake points", asin: null },
+      { id: 2, name: "Rapala Jigging Rap", brand: "Rapala", price: "$10.99", rating: 4.6, reviews: 789, reason: "Walleye biting on jigging presentations", asin: null },
     ],
   },
   "13": {
@@ -314,8 +313,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "White Bass", "Crappie", "Walleye", "Channel Catfish"],
     reports: [],
     tackle: [
-      { id: 1, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie stacking in the coves", asin: null, bassproUrl: null },
-      { id: 2, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Finesse worm working on bass", asin: null, bassproUrl: null },
+      { id: 1, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie stacking in the coves", asin: null },
+      { id: 2, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Finesse worm working on bass", asin: null },
     ],
   },
   "14": {
@@ -332,8 +331,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Walleye", "Yellow Perch", "Northern Pike", "Largemouth Bass", "Crappie"],
     reports: [],
     tackle: [
-      { id: 1, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Classic walleye and pike producer", asin: null, bassproUrl: null },
-      { id: 2, name: "Rapala Jigging Rap", brand: "Rapala", price: "$10.99", rating: 4.6, reviews: 789, reason: "Walleye biting on jigging presentations", asin: null, bassproUrl: null },
+      { id: 1, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Classic walleye and pike producer", asin: null },
+      { id: 2, name: "Rapala Jigging Rap", brand: "Rapala", price: "$10.99", rating: 4.6, reviews: 789, reason: "Walleye biting on jigging presentations", asin: null },
     ],
   },
   "15": {
@@ -350,7 +349,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Walleye", "Smallmouth Bass", "Largemouth Bass", "Crappie", "Northern Pike"],
     reports: [],
     tackle: [
-      { id: 1, name: "Rapala Jigging Rap", brand: "Rapala", price: "$10.99", rating: 4.6, reviews: 789, reason: "Deep walleye presentations working well", asin: null, bassproUrl: null },
+      { id: 1, name: "Rapala Jigging Rap", brand: "Rapala", price: "$10.99", rating: 4.6, reviews: 789, reason: "Deep walleye presentations working well", asin: null },
     ],
   },
   "16": {
@@ -367,7 +366,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Walleye", "Largemouth Bass", "Crappie", "Channel Catfish", "White Bass"],
     reports: [],
     tackle: [
-      { id: 1, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "Lipless crank working for walleye and bass", asin: null, bassproUrl: null },
+      { id: 1, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "Lipless crank working for walleye and bass", asin: null },
     ],
   },
   "17": {
@@ -384,7 +383,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Crappie", "Channel Catfish", "Walleye"],
     reports: [],
     tackle: [
-      { id: 1, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Bass on finesse presentations in clear water", asin: null, bassproUrl: null },
+      { id: 1, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Bass on finesse presentations in clear water", asin: null },
     ],
   },
 
@@ -403,8 +402,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Crappie", "Bluegill", "Channel Catfish", "White Bass", "Walleye"],
     reports: [],
     tackle: [
-      { id: 1, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie stacking under docks", asin: null, bassproUrl: null },
-      { id: 2, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Bass on main lake structure", asin: null, bassproUrl: null },
+      { id: 1, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie stacking under docks", asin: null },
+      { id: 2, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Bass on main lake structure", asin: null },
     ],
   },
   "19": {
@@ -421,8 +420,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "White Bass", "Crappie", "Channel Catfish", "Walleye", "Hybrid Striped Bass"],
     reports: [],
     tackle: [
-      { id: 1, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "White bass and hybrid striper slashing bait", asin: null, bassproUrl: null },
-      { id: 2, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Bass producing on points and humps", asin: null, bassproUrl: null },
+      { id: 1, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "White bass and hybrid striper slashing bait", asin: null },
+      { id: 2, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Bass producing on points and humps", asin: null },
     ],
   },
   "20": {
@@ -439,7 +438,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Crappie", "Channel Catfish", "White Bass", "Walleye"],
     reports: [],
     tackle: [
-      { id: 1, name: "BOOYAH Pad Crasher Frog", brand: "BOOYAH", price: "$8.99", rating: 4.7, reviews: 1243, reason: "Bass hitting topwater in shallow coves", asin: null, bassproUrl: null },
+      { id: 1, name: "BOOYAH Pad Crasher Frog", brand: "BOOYAH", price: "$8.99", rating: 4.7, reviews: 1243, reason: "Bass hitting topwater in shallow coves", asin: null },
     ],
   },
   "21": {
@@ -456,8 +455,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Crappie", "Bluegill", "Channel Catfish", "Flathead Catfish"],
     reports: [],
     tackle: [
-      { id: 1, name: "Berkley Gulp! Catfish Dough", brand: "Berkley", price: "$6.99", rating: 4.4, reviews: 543, reason: "Catfish biting on bottom rigs", asin: null, bassproUrl: null },
-      { id: 2, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Bass on finesse in clear water", asin: null, bassproUrl: null },
+      { id: 1, name: "Berkley Gulp! Catfish Dough", brand: "Berkley", price: "$6.99", rating: 4.4, reviews: 543, reason: "Catfish biting on bottom rigs", asin: null },
+      { id: 2, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Bass on finesse in clear water", asin: null },
     ],
   },
   "22": {
@@ -474,8 +473,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Northern Pike", "Walleye", "Crappie", "Muskie", "Bluegill"],
     reports: [],
     tackle: [
-      { id: 1, name: "Suick Thriller Muskie Bait", brand: "Suick", price: "$24.99", rating: 4.4, reviews: 312, reason: "Muskie and pike active on jerkbaits", asin: null, bassproUrl: null },
-      { id: 2, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Classic walleye and pike producer", asin: null, bassproUrl: null },
+      { id: 1, name: "Suick Thriller Muskie Bait", brand: "Suick", price: "$24.99", rating: 4.4, reviews: 312, reason: "Muskie and pike active on jerkbaits", asin: null },
+      { id: 2, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Classic walleye and pike producer", asin: null },
     ],
   },
   "23": {
@@ -492,7 +491,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Crappie", "Channel Catfish", "Bluegill", "White Bass"],
     reports: [],
     tackle: [
-      { id: 1, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie producing under structure", asin: null, bassproUrl: null },
+      { id: 1, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie producing under structure", asin: null },
     ],
   },
 
@@ -511,8 +510,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Crappie", "Striped Bass", "White Bass", "Channel Catfish", "Walleye"],
     reports: [],
     tackle: [
-      { id: 1, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Bass crushing crankbaits along ledges", asin: null, bassproUrl: null },
-      { id: 2, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie stacking on brush piles", asin: null, bassproUrl: null },
+      { id: 1, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Bass crushing crankbaits along ledges", asin: null },
+      { id: 2, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie stacking on brush piles", asin: null },
     ],
   },
   "25": {
@@ -529,7 +528,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Crappie", "Striped Bass", "White Bass", "Sauger"],
     reports: [],
     tackle: [
-      { id: 1, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Finesse worm working on deeper bass", asin: null, bassproUrl: null },
+      { id: 1, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Finesse worm working on deeper bass", asin: null },
     ],
   },
   "26": {
@@ -546,8 +545,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Smallmouth Bass", "Largemouth Bass", "Crappie", "Walleye", "Rainbow Trout", "Channel Catfish"],
     reports: [],
     tackle: [
-      { id: 1, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Smallmouth bass crushing floaters off rocky banks", asin: null, bassproUrl: null },
-      { id: 2, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Drop shot deadly on deep smallmouth", asin: null, bassproUrl: null },
+      { id: 1, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Smallmouth bass crushing floaters off rocky banks", asin: null },
+      { id: 2, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Drop shot deadly on deep smallmouth", asin: null },
     ],
   },
   "27": {
@@ -564,8 +563,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Striped Bass", "Walleye", "Crappie", "Rainbow Trout", "Brown Trout"],
     reports: [],
     tackle: [
-      { id: 1, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "Striped bass and walleye hammering shad imitations", asin: null, bassproUrl: null },
-      { id: 2, name: "Rapala Jigging Rap", brand: "Rapala", price: "$10.99", rating: 4.6, reviews: 789, reason: "Deep walleye and trout presentations", asin: null, bassproUrl: null },
+      { id: 1, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "Striped bass and walleye hammering shad imitations", asin: null },
+      { id: 2, name: "Rapala Jigging Rap", brand: "Rapala", price: "$10.99", rating: 4.6, reviews: 789, reason: "Deep walleye and trout presentations", asin: null },
     ],
   },
   "28": {
@@ -582,7 +581,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Crappie", "White Bass", "Channel Catfish", "Walleye"],
     reports: [],
     tackle: [
-      { id: 1, name: "BOOYAH Pad Crasher Frog", brand: "BOOYAH", price: "$8.99", rating: 4.7, reviews: 1243, reason: "Bass hitting topwater in shallow areas", asin: null, bassproUrl: null },
+      { id: 1, name: "BOOYAH Pad Crasher Frog", brand: "BOOYAH", price: "$8.99", rating: 4.7, reviews: 1243, reason: "Bass hitting topwater in shallow areas", asin: null },
     ],
   },
 
@@ -601,8 +600,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Striped Bass", "Crappie", "Walleye", "Rainbow Trout", "Brown Trout"],
     reports: [],
     tackle: [
-      { id: 1, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Smallmouth on drop shot in clear deep water", asin: null, bassproUrl: null },
-      { id: 2, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "Striped bass chasing shad on main lake", asin: null, bassproUrl: null },
+      { id: 1, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Smallmouth on drop shot in clear deep water", asin: null },
+      { id: 2, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "Striped bass chasing shad on main lake", asin: null },
     ],
   },
   "30": {
@@ -619,7 +618,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Crappie", "Striped Bass", "Walleye", "Channel Catfish"],
     reports: [],
     tackle: [
-      { id: 1, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Bass on main lake points and ledges", asin: null, bassproUrl: null },
+      { id: 1, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Bass on main lake points and ledges", asin: null },
     ],
   },
   "31": {
@@ -636,8 +635,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Crappie", "Bluegill", "Largemouth Bass", "Channel Catfish", "Yellow Bass"],
     reports: [],
     tackle: [
-      { id: 1, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Famous crappie lake — jigs producing all day", asin: null, bassproUrl: null },
-      { id: 2, name: "Southern Pro Tube Jig 1/8oz", brand: "Southern Pro", price: "$3.99", rating: 4.4, reviews: 654, reason: "Slow troll tubes through cypress trees", asin: null, bassproUrl: null },
+      { id: 1, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Famous crappie lake — jigs producing all day", asin: null },
+      { id: 2, name: "Southern Pro Tube Jig 1/8oz", brand: "Southern Pro", price: "$3.99", rating: 4.4, reviews: 654, reason: "Slow troll tubes through cypress trees", asin: null },
     ],
   },
   "32": {
@@ -654,7 +653,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Smallmouth Bass", "Largemouth Bass", "Walleye", "Crappie", "Rainbow Trout", "Brown Trout"],
     reports: [],
     tackle: [
-      { id: 1, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Smallmouth and trout on floaters near rocky banks", asin: null, bassproUrl: null },
+      { id: 1, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Smallmouth and trout on floaters near rocky banks", asin: null },
     ],
   },
   "33": {
@@ -671,8 +670,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Spotted Bass", "Crappie", "Striped Bass", "Channel Catfish"],
     reports: [],
     tackle: [
-      { id: 1, name: "BOOYAH Pad Crasher Frog", brand: "BOOYAH", price: "$8.99", rating: 4.7, reviews: 1243, reason: "Topwater bass bite active near Nashville", asin: null, bassproUrl: null },
-      { id: 2, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Drop shot producing on spotted bass", asin: null, bassproUrl: null },
+      { id: 1, name: "BOOYAH Pad Crasher Frog", brand: "BOOYAH", price: "$8.99", rating: 4.7, reviews: 1243, reason: "Topwater bass bite active near Nashville", asin: null },
+      { id: 2, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Drop shot producing on spotted bass", asin: null },
     ],
   },
 
@@ -691,8 +690,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Striped Bass", "Spotted Bass", "Crappie", "Walleye", "Channel Catfish"],
     reports: [],
     tackle: [
-      { id: 1, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Finesse working on clear deep water bass", asin: null, bassproUrl: null },
-      { id: 2, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "Striped bass chasing shad on main lake", asin: null, bassproUrl: null },
+      { id: 1, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Finesse working on clear deep water bass", asin: null },
+      { id: 2, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "Striped bass chasing shad on main lake", asin: null },
     ],
   },
   "35": {
@@ -709,8 +708,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Striped Bass", "Crappie", "Walleye", "Channel Catfish"],
     reports: [],
     tackle: [
-      { id: 1, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Smallmouth crushing floaters on rocky banks", asin: null, bassproUrl: null },
-      { id: 2, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie stacking on submerged timber", asin: null, bassproUrl: null },
+      { id: 1, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Smallmouth crushing floaters on rocky banks", asin: null },
+      { id: 2, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie stacking on submerged timber", asin: null },
     ],
   },
   "36": {
@@ -727,7 +726,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Striped Bass", "Crappie", "Walleye", "Channel Catfish"],
     reports: [],
     tackle: [
-      { id: 1, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Bass on ledges and main lake points", asin: null, bassproUrl: null },
+      { id: 1, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Bass on ledges and main lake points", asin: null },
     ],
   },
   "37": {
@@ -744,8 +743,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Striped Bass", "Crappie", "Walleye", "Channel Catfish"],
     reports: [],
     tackle: [
-      { id: 1, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Deep finesse producing on clear water bass", asin: null, bassproUrl: null },
-      { id: 2, name: "Rapala Jigging Rap", brand: "Rapala", price: "$10.99", rating: 4.6, reviews: 789, reason: "Walleye on deep jigging presentations", asin: null, bassproUrl: null },
+      { id: 1, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Deep finesse producing on clear water bass", asin: null },
+      { id: 2, name: "Rapala Jigging Rap", brand: "Rapala", price: "$10.99", rating: 4.6, reviews: 789, reason: "Walleye on deep jigging presentations", asin: null },
     ],
   },
   "38": {
@@ -762,8 +761,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Crappie", "Bluegill", "Channel Catfish", "Flathead Catfish", "White Bass", "Striped Bass"],
     reports: [],
     tackle: [
-      { id: 1, name: "Berkley Gulp! Catfish Dough", brand: "Berkley", price: "$6.99", rating: 4.4, reviews: 543, reason: "Catfish active on bottom rigs in the shallows", asin: null, bassproUrl: null },
-      { id: 2, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie stacking on brush piles and timber", asin: null, bassproUrl: null },
+      { id: 1, name: "Berkley Gulp! Catfish Dough", brand: "Berkley", price: "$6.99", rating: 4.4, reviews: 543, reason: "Catfish active on bottom rigs in the shallows", asin: null },
+      { id: 2, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie stacking on brush piles and timber", asin: null },
     ],
   },
   "39": {
@@ -780,8 +779,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Crappie", "Bluegill", "Channel Catfish", "Flathead Catfish"],
     reports: [],
     tackle: [
-      { id: 1, name: "BOOYAH Pad Crasher Frog", brand: "BOOYAH", price: "$8.99", rating: 4.7, reviews: 1243, reason: "Giant bass crushing topwater in heavy cover", asin: null, bassproUrl: null },
-      { id: 2, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Bass on main lake points and ledges", asin: null, bassproUrl: null },
+      { id: 1, name: "BOOYAH Pad Crasher Frog", brand: "BOOYAH", price: "$8.99", rating: 4.7, reviews: 1243, reason: "Giant bass crushing topwater in heavy cover", asin: null },
+      { id: 2, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Bass on main lake points and ledges", asin: null },
     ],
   },
 
@@ -800,8 +799,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "White Bass", "Walleye", "Crappie", "Channel Catfish", "Wiper"],
     reports: [],
     tackle: [
-      { id: 1, name: "Rapala Jigging Rap", brand: "Rapala", price: "$10.99", rating: 4.6, reviews: 789, reason: "Walleye biting on jigging presentations", asin: null, bassproUrl: null },
-      { id: 2, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "Wiper and white bass chasing shad", asin: null, bassproUrl: null },
+      { id: 1, name: "Rapala Jigging Rap", brand: "Rapala", price: "$10.99", rating: 4.6, reviews: 789, reason: "Walleye biting on jigging presentations", asin: null },
+      { id: 2, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "Wiper and white bass chasing shad", asin: null },
     ],
   },
   "41": {
@@ -818,7 +817,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Walleye", "Largemouth Bass", "White Bass", "Wiper", "Crappie", "Channel Catfish"],
     reports: [],
     tackle: [
-      { id: 1, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Walleye producing at dawn and dusk", asin: null, bassproUrl: null },
+      { id: 1, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Walleye producing at dawn and dusk", asin: null },
     ],
   },
   "42": {
@@ -835,7 +834,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "White Bass", "Walleye", "Crappie", "Channel Catfish", "Wiper"],
     reports: [],
     tackle: [
-      { id: 1, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Bass and walleye on main lake structure", asin: null, bassproUrl: null },
+      { id: 1, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Bass and walleye on main lake structure", asin: null },
     ],
   },
   "43": {
@@ -852,7 +851,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Crappie", "White Bass", "Walleye", "Channel Catfish"],
     reports: [],
     tackle: [
-      { id: 1, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Finesse working on largemouth in clear coves", asin: null, bassproUrl: null },
+      { id: 1, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Finesse working on largemouth in clear coves", asin: null },
     ],
   },
   "44": {
@@ -869,7 +868,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "White Bass", "Crappie", "Walleye", "Channel Catfish", "Wiper"],
     reports: [],
     tackle: [
-      { id: 1, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie producing on submerged brush", asin: null, bassproUrl: null },
+      { id: 1, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie producing on submerged brush", asin: null },
     ],
   },
 
@@ -888,8 +887,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Striped Bass", "Walleye", "Largemouth Bass", "Smallmouth Bass", "White Bass", "Yellow Perch", "Rainbow Trout", "Channel Catfish"],
     reports: [],
     tackle: [
-      { id: 1, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "Striped bass and walleye crushing shad imitations", asin: null, bassproUrl: null },
-      { id: 2, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Walleye and trout on floaters near inlets", asin: null, bassproUrl: null },
+      { id: 1, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "Striped bass and walleye crushing shad imitations", asin: null },
+      { id: 2, name: "Rapala Original Floater", brand: "Rapala", price: "$9.99", rating: 4.7, reviews: 3421, reason: "Walleye and trout on floaters near inlets", asin: null },
     ],
   },
   "46": {
@@ -906,7 +905,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Walleye", "Largemouth Bass", "White Bass", "Crappie", "Channel Catfish", "Wiper"],
     reports: [],
     tackle: [
-      { id: 1, name: "Rapala Jigging Rap", brand: "Rapala", price: "$10.99", rating: 4.6, reviews: 789, reason: "Walleye on jigging presentations", asin: null, bassproUrl: null },
+      { id: 1, name: "Rapala Jigging Rap", brand: "Rapala", price: "$10.99", rating: 4.6, reviews: 789, reason: "Walleye on jigging presentations", asin: null },
     ],
   },
   "47": {
@@ -923,8 +922,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Walleye", "Sauger", "Smallmouth Bass", "Channel Catfish", "White Bass", "Crappie", "Northern Pike"],
     reports: [],
     tackle: [
-      { id: 1, name: "Rapala Jigging Rap", brand: "Rapala", price: "$10.99", rating: 4.6, reviews: 789, reason: "Walleye and sauger on jigging rigs", asin: null, bassproUrl: null },
-      { id: 2, name: "Eagle Claw Kahle Hook 3/0", brand: "Eagle Claw", price: "$4.49", rating: 4.6, reviews: 1876, reason: "Channel cat on bottom rigs in current", asin: null, bassproUrl: null },
+      { id: 1, name: "Rapala Jigging Rap", brand: "Rapala", price: "$10.99", rating: 4.6, reviews: 789, reason: "Walleye and sauger on jigging rigs", asin: null },
+      { id: 2, name: "Eagle Claw Kahle Hook 3/0", brand: "Eagle Claw", price: "$4.49", rating: 4.6, reviews: 1876, reason: "Channel cat on bottom rigs in current", asin: null },
     ],
   },
   "48": {
@@ -941,7 +940,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Walleye", "Largemouth Bass", "Northern Pike", "Channel Catfish", "Crappie", "Tiger Muskie"],
     reports: [],
     tackle: [
-      { id: 1, name: "Suick Thriller Muskie Bait", brand: "Suick", price: "$24.99", rating: 4.4, reviews: 312, reason: "Tiger muskie and pike active on jerkbaits", asin: null, bassproUrl: null },
+      { id: 1, name: "Suick Thriller Muskie Bait", brand: "Suick", price: "$24.99", rating: 4.4, reviews: 312, reason: "Tiger muskie and pike active on jerkbaits", asin: null },
     ],
   },
 
@@ -960,8 +959,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Crappie", "Bluegill", "Channel Catfish", "White Bass"],
     reports: [],
     tackle: [
-      { id: 1, name: "BOOYAH Pad Crasher Frog", brand: "BOOYAH", price: "$8.99", rating: 4.7, reviews: 1243, reason: "Giant bass crushing topwater in shallow timber", asin: null, bassproUrl: null },
-      { id: 2, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Bass on main lake ledges and points", asin: null, bassproUrl: null },
+      { id: 1, name: "BOOYAH Pad Crasher Frog", brand: "BOOYAH", price: "$8.99", rating: 4.7, reviews: 1243, reason: "Giant bass crushing topwater in shallow timber", asin: null },
+      { id: 2, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "Bass on main lake ledges and points", asin: null },
     ],
   },
   "50": {
@@ -978,8 +977,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Crappie", "Bluegill", "Channel Catfish", "White Bass", "Hybrid Striped Bass"],
     reports: [],
     tackle: [
-      { id: 1, name: "BOOYAH Pad Crasher Frog", brand: "BOOYAH", price: "$8.99", rating: 4.7, reviews: 1243, reason: "Trophy bass crushing topwater in heavy cover", asin: null, bassproUrl: null },
-      { id: 2, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Big bass on deep finesse presentations", asin: null, bassproUrl: null },
+      { id: 1, name: "BOOYAH Pad Crasher Frog", brand: "BOOYAH", price: "$8.99", rating: 4.7, reviews: 1243, reason: "Trophy bass crushing topwater in heavy cover", asin: null },
+      { id: 2, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Big bass on deep finesse presentations", asin: null },
     ],
   },
   "51": {
@@ -996,8 +995,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Crappie", "Bluegill", "Channel Catfish"],
     reports: [],
     tackle: [
-      { id: 1, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "World-class bass lake — crankbaits producing on ledges", asin: null, bassproUrl: null },
-      { id: 2, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Big bass on worms near submerged timber", asin: null, bassproUrl: null },
+      { id: 1, name: "Strike King KVD 1.5 Crankbait", brand: "Strike King", price: "$11.49", rating: 4.8, reviews: 876, reason: "World-class bass lake — crankbaits producing on ledges", asin: null },
+      { id: 2, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Big bass on worms near submerged timber", asin: null },
     ],
   },
   "52": {
@@ -1014,8 +1013,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Striped Bass", "Largemouth Bass", "Smallmouth Bass", "Crappie", "White Bass", "Channel Catfish", "Sauger"],
     reports: [],
     tackle: [
-      { id: 1, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "Striped bass crushing shad imitations on main lake", asin: null, bassproUrl: null },
-      { id: 2, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie producing on brush piles", asin: null, bassproUrl: null },
+      { id: 1, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "Striped bass crushing shad imitations on main lake", asin: null },
+      { id: 2, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie producing on brush piles", asin: null },
     ],
   },
   "53": {
@@ -1032,7 +1031,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Striped Bass", "White Bass", "Crappie", "Catfish"],
     reports: [],
     tackle: [
-      { id: 1, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Bass on finesse in clear Hill Country water", asin: null, bassproUrl: null },
+      { id: 1, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Bass on finesse in clear Hill Country water", asin: null },
     ],
   },
   "54": {
@@ -1049,8 +1048,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Crappie", "Bluegill", "Channel Catfish", "Striped Bass", "White Bass"],
     reports: [],
     tackle: [
-      { id: 1, name: "BOOYAH Pad Crasher Frog", brand: "BOOYAH", price: "$8.99", rating: 4.7, reviews: 1243, reason: "Bass hitting topwater in shallow grass", asin: null, bassproUrl: null },
-      { id: 2, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie stacking on timber and brush", asin: null, bassproUrl: null },
+      { id: 1, name: "BOOYAH Pad Crasher Frog", brand: "BOOYAH", price: "$8.99", rating: 4.7, reviews: 1243, reason: "Bass hitting topwater in shallow grass", asin: null },
+      { id: 2, name: "Bobby Garland Crappie Baby", brand: "Bobby Garland", price: "$4.99", rating: 4.6, reviews: 2104, reason: "Crappie stacking on timber and brush", asin: null },
     ],
   },
   "55": {
@@ -1067,7 +1066,7 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Striped Bass", "White Bass", "Crappie", "Catfish", "Guadalupe Bass"],
     reports: [],
     tackle: [
-      { id: 1, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "Striped bass and white bass chasing shad", asin: null, bassproUrl: null },
+      { id: 1, name: "Strike King Red Eye Shad", brand: "Strike King", price: "$8.49", rating: 4.5, reviews: 987, reason: "Striped bass and white bass chasing shad", asin: null },
     ],
   },
   "56": {
@@ -1084,8 +1083,8 @@ export const lakes: Record<string, Lake> = {
     species: ["Largemouth Bass", "Smallmouth Bass", "Striped Bass", "Flathead Catfish", "Blue Catfish", "Channel Catfish", "White Bass"],
     reports: [],
     tackle: [
-      { id: 1, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Bass on finesse in ultra-clear water", asin: null, bassproUrl: null },
-      { id: 2, name: "Berkley Gulp! Catfish Dough", brand: "Berkley", price: "$6.99", rating: 4.4, reviews: 543, reason: "Giant catfish on bottom rigs in deep water", asin: null, bassproUrl: null },
+      { id: 1, name: "Zoom Trick Worm", brand: "Zoom", price: "$5.99", rating: 4.6, reviews: 1543, reason: "Bass on finesse in ultra-clear water", asin: null },
+      { id: 2, name: "Berkley Gulp! Catfish Dough", brand: "Berkley", price: "$6.99", rating: 4.4, reviews: 543, reason: "Giant catfish on bottom rigs in deep water", asin: null },
     ],
   },
 };
